@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///C:/Users/dganguli/Downloads/dipankarganguli-homepage_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Dipankar Ganguli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --ink:#1c2b33; --stone:#6b7c88; --mist:#f4f5f6; --white:#fff;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  html { scroll-behavior:smooth; }
+  body { font-family:var(--sans); color:var(--ink); background:var(--mist); -webkit-font-smoothing:antialiased; min-height:100vh; }
+
+  /* ── Hero / Header ─────────────────────────────────────── */
+  .hero {
+    background:#0f1923;
+    padding:5rem 2rem 0;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  /* Subtle dot grid */
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background-image:radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size:32px 32px;
+    pointer-events:none;
+  }
+  /* Soft glow rings */
+  .hero::after {
+    content:''; position:absolute;
+    width:600px; height:600px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(100,160,220,.07), transparent 70%);
+    top:-200px; left:50%; transform:translateX(-50%);
+    pointer-events:none;
+  }
+  .hero-inner { position:relative; z-index:1; }
+  .avatar {
+    width:88px; height:88px; border-radius:50%;
+    background:linear-gradient(135deg,#2a5a8a,#1a3a5a);
+    border:2.5px solid rgba(255,255,255,.15);
+    margin:0 auto 1.5rem;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-size:2rem; color:rgba(255,255,255,.85);
+    font-style:italic;
+    overflow:hidden;
+  }
+  .avatar img { width:100%; height:100%; object-fit:cover; object-position:top; }
+  .hero-name {
+    font-family:var(--serif); font-size:clamp(2.2rem,5vw,3.6rem);
+    color:#fff; font-weight:400; line-height:1.1; margin-bottom:.5rem;
+  }
+  .hero-name em { font-style:italic; color:rgba(160,200,240,.8); }
+  .hero-tagline {
+    font-size:.95rem; color:rgba(255,255,255,.45);
+    max-width:440px; margin:.7rem auto 0;
+    line-height:1.7; font-weight:300; letter-spacing:.01em;
+  }
+  .hero-links {
+    display:flex; justify-content:center; gap:.8rem;
+    margin:1.8rem 0 0; flex-wrap:wrap;
+  }
+  .hero-link {
+    font-size:.78rem; color:rgba(255,255,255,.5); text-decoration:none;
+    font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+    padding:.35rem .9rem; border:1px solid rgba(255,255,255,.1);
+    border-radius:20px; transition:all .2s;
+  }
+  .hero-link:hover { color:rgba(255,255,255,.85); border-color:rgba(255,255,255,.3); background:rgba(255,255,255,.05); }
+  .hero-wave { display:block; width:100%; margin-top:3.5rem; }
+
+  /* ── Intro line ──────────────────────────────────────────── */
+  .intro-line {
+    text-align:center; padding:2.5rem 1.5rem 0;
+    font-size:.88rem; color:var(--stone);
+    max-width:580px; margin:0 auto;
+    line-height:1.7;
+  }
+  .intro-line strong { color:var(--ink); font-weight:500; }
+
+  /* ── Projects grid ───────────────────────────────────────── */
+  .projects { max-width:980px; margin:0 auto; padding:2.5rem 1.5rem 2rem; }
+  .projects-label {
+    font-size:.68rem; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--stone);
+    margin-bottom:1.4rem; text-align:center;
+  }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.2rem; }
+
+  /* ── Project card ────────────────────────────────────────── */
+  .pcard {
+    background:var(--white); border-radius:14px;
+    border:1px solid rgba(0,0,0,.07);
+    overflow:hidden; text-decoration:none; color:inherit;
+    display:flex; flex-direction:column;
+    transition:transform .22s, box-shadow .22s;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+  .pcard:hover { transform:translateY(-4px); box-shadow:0 10px 32px rgba(0,0,0,.12); }
+  .pcard.coming { cursor:default; opacity:.6; }
+  .pcard.coming:hover { transform:none; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+
+  /* Card top band — full-bleed colour strip with icon */
+  .card-band {
+    height:130px; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; flex-shrink:0;
+  }
+  .card-band-icon {
+    font-size:3.2rem; position:relative; z-index:1;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.18));
+  }
+  /* Wave cutout at bottom of band */
+  .card-band svg { position:absolute; bottom:-1px; left:0; right:0; width:100%; }
+
+  /* Card body */
+  .card-body { padding:1.2rem 1.4rem 1.5rem; flex:1; display:flex; flex-direction:column; gap:.5rem; }
+  .card-eyebrow {
+    font-size:.64rem; font-weight:600; letter-spacing:.12em;
+    text-transform:uppercase; opacity:.5;
+  }
+  .card-name { font-family:var(--serif); font-size:1.4rem; line-height:1.15; }
+  .card-desc { font-size:.83rem; color:var(--stone); line-height:1.6; flex:1; margin-top:.1rem; }
+  .card-footer {
+    margin-top:.9rem; padding-top:.9rem;
+    border-top:1px solid rgba(0,0,0,.06);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .card-tags { display:flex; gap:.35rem; flex-wrap:wrap; }
+  .ctag {
+    font-size:.65rem; padding:2px 8px; border-radius:8px;
+    font-weight:500; letter-spacing:.02em;
+  }
+  .card-arrow {
+    font-size:.85rem; font-weight:600;
+    display:flex; align-items:center; gap:.3rem;
+    white-space:nowrap; flex-shrink:0;
+    transition:gap .2s;
+  }
+  .pcard:hover .card-arrow { gap:.55rem; }
+  .card-status-badge {
+    font-size:.62rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; padding:3px 10px; border-radius:20px;
+  }
+
+  /* Individual card colour themes */
+  /* Travelomania — deep ocean teal */
+  .theme-travel .card-band { background:linear-gradient(145deg,#0d3f52,#1a6b8a); }
+  .theme-travel .card-eyebrow { color:#1a6b8a; }
+  .theme-travel .card-arrow { color:#1a6b8a; }
+  .theme-travel .ctag { background:#d6eef5; color:#0d5a77; }
+  .theme-travel .card-status-badge { background:#d6eef5; color:#0d5a77; }
+
+  /* History — warm terracotta / parchment */
+  .theme-history .card-band { background:linear-gradient(145deg,#4a1b0c,#8b3a2a); }
+  .theme-history .card-eyebrow { color:#8b3a2a; }
+  .theme-history .card-arrow { color:#8b3a2a; }
+  .theme-history .ctag { background:#fce8e3; color:#7a2a1a; }
+  .theme-history .card-status-badge { background:#fce8e3; color:#7a2a1a; }
+
+  /* Notation — deep purple / ink */
+  .theme-notation .card-band { background:linear-gradient(145deg,#1e1535,#3d2b7a); }
+  .theme-notation .card-eyebrow { color:#6b52c4; }
+  .theme-notation .card-arrow { color:#6b52c4; }
+  .theme-notation .ctag { background:#eeedfe; color:#3c3489; }
+  .theme-notation .card-status-badge { background:#eeedfe; color:#3c3489; }
+
+  /* ── Coming soon card ────────────────────────────────────── */
+  .coming-inner {
+    border:2px dashed rgba(0,0,0,.1); border-radius:14px;
+    height:100%; min-height:240px;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:.8rem; padding:2rem;
+    background:rgba(0,0,0,.01);
+  }
+  .coming-icon { font-size:2rem; opacity:.3; }
+  .coming-title { font-family:var(--serif); font-size:1.1rem; color:var(--stone); }
+  .coming-sub { font-size:.78rem; color:rgba(107,124,136,.6); text-align:center; line-height:1.55; }
+
+  /* ── Footer ──────────────────────────────────────────────── */
+  footer {
+    text-align:center; padding:3rem 1.5rem 2.5rem;
+    font-size:.78rem; color:rgba(107,124,136,.7);
+    line-height:1.9;
+  }
+  footer a { color:var(--stone); text-decoration:none; border-bottom:1px solid rgba(107,124,136,.25); transition:color .15s; }
+  footer a:hover { color:var(--ink); }
+  .footer-divider { width:40px; height:1px; background:rgba(0,0,0,.1); margin:1.5rem auto; }
+
+  @media(max-width:600px) {
+    .hero { padding:3.5rem 1.25rem 0; }
+    .projects { padding:2rem 1rem; }
+    .grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Hero ───────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="avatar">
+      <img src="./index_files/Dipankar.jpg" alt="Dipankar" onerror="this.style.display=&#39;none&#39;;this.parentElement.innerHTML=&#39;D&#39;">
+    </div>
+    <h1 class="hero-name">Dipankar <em>Ganguli</em></h1>
+    <p class="hero-tagline">Building things on the internet — travel memories, historical curiosities, and musical notation. One project at a time.</p>
+    <div class="hero-links">
+      <a class="hero-link" href="https://github.com/dipankarganguli" target="_blank">GitHub</a>
+      <a class="hero-link" href="mailto:dipankarganguli@gmail.com">Email</a>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 52 C360 8 720 44 1080 18 C1260 6 1380 38 1440 22 L1440 52 Z" fill="#f4f5f6"></path>
+  </svg>
+</div>
+
+<!-- ── Intro ──────────────────────────────────────────────── -->
+<p class="intro-line">
+  A collection of <strong>personal projects</strong> — each lives at its own corner of this site.
+  Pick one to explore.
+</p>
+
+<!-- ── Projects ──────────────────────────────────────────── -->
+<div class="projects">
+  <p class="projects-label">My Projects</p>
+  <div class="grid">
+
+    <!-- Travelomania -->
+    <a class="pcard theme-travel" href="https://dipankarganguli.github.io/travelomania/">
+      <div class="card-band">
+        <span class="card-band-icon">✦</span>
+        <svg viewBox="0 0 400 28" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 28 C100 4 200 24 300 10 C360 2 390 20 400 14 L400 28 Z" fill="#fff"></path>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-eyebrow">Travel · Planning · Memories</div>
+        <div class="card-name">Travelomania</div>
+        <div class="card-desc">Trip planning, photo galleries, and post-trip stories for a crew of 15. From Acadia National Park to the Thousand Islands — every adventure documented.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="ctag">Active</span>
+            <span class="ctag">2 trips</span>
+            <span class="ctag">15 travelers</span>
+          </div>
+          <span class="card-arrow">Visit →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- The History Archive -->
+    <a class="pcard theme-history" href="https://dipankarganguli.github.io/history-archive/" onclick="return false;" style="cursor:default;opacity:.55;">
+      <div class="card-band">
+        <span class="card-band-icon">📜</span>
+        <svg viewBox="0 0 400 28" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 28 C100 4 200 24 300 10 C360 2 390 20 400 14 L400 28 Z" fill="#fff"></path>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-eyebrow">History · Research · Stories</div>
+        <div class="card-name">The History Archive</div>
+        <div class="card-desc">A personal archive of historical deep-dives — events, people, and eras worth understanding. Essays, timelines, and curated research notes.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="ctag">Coming soon</span>
+          </div>
+          <span class="card-arrow" style="opacity:.4">Soon →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- The Notation -->
+    <a class="pcard theme-notation" href="https://dipankarganguli.github.io/the-notation/" onclick="return false;" style="cursor:default;opacity:.55;">
+      <div class="card-band">
+        <span class="card-band-icon">🎵</span>
+        <svg viewBox="0 0 400 28" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 28 C100 4 200 24 300 10 C360 2 390 20 400 14 L400 28 Z" fill="#fff"></path>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-eyebrow">Music · Notes · Scores</div>
+        <div class="card-name">The Notation</div>
+        <div class="card-desc">Sheet music, compositions, and musical annotations — a library of scores and notes for piano, vocals, and beyond. Coming when the keys align.</div>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="ctag">Coming soon</span>
+          </div>
+          <span class="card-arrow" style="opacity:.4">Soon →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-divider"></div>
+  <p>
+    <a href="https://github.com/dipankarganguli" target="_blank">github.com/dipankarganguli</a>
+    &nbsp;·&nbsp;
+    Built with curiosity, hosted on GitHub Pages
+  </p>
+  <p style="margin-top:.4rem;font-size:.72rem;opacity:.6">
+    dipankarganguli.github.io
+  </p>
+</footer>
+
+
+
+</body></html>
